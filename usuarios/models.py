@@ -30,7 +30,7 @@ class Usuario(models.Model):
     altura = models.FloatField()
     objetivo = models.CharField(max_length=20, choices=OBJETIVOS_CHOICES)
     tipo_deficit = models.CharField(max_length=20, choices=DEFICIT_CHOICES)
-    ativiade = models.CharField(max_length=20, choices=ATIVIDADE_CHOICES)
+    atividade = models.CharField(max_length=20, choices=ATIVIDADE_CHOICES)
 
 
     def __str__(self):

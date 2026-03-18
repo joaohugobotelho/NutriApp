@@ -1,0 +1,17 @@
+nome,proteina,carboidrato,gordura,calorias,custo,categoria
+Arroz branco,2.5,28,0.3,130,0.5,carbo
+Feijão,9,14,0.5,120,0.7,carbo
+Frango peito,31,0,3.6,165,2.5,proteina
+Carne moida,26,0,15,250,3.5,proteina
+Ovo,6,1,5,70,0.8,proteina
+Batata inglesa,2,20,0.1,90,0.6,carbo
+Batata doce,1.6,20,0.1,86,0.7,carbo
+Pão francês,8,50,3,270,0.9,carbo
+Macarrão,5,25,1.1,130,1.0,carbo
+Aveia,17,66,7,389,1.2,carbo
+Leite integral,3,5,3,60,0.6,proteina
+Queijo,25,1,33,402,2.0,gordura
+Azeite,0,0,100,884,1.5,gordura
+Amendoim,26,16,49,567,1.5,gordura
+Banana,1.1,23,0.3,96,0.5,carbo
+Maçã,0.3,14,0.2,52,0.6,carbo

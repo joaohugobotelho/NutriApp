@@ -1,11 +1,13 @@
 from django.db import models
 
-class Aliemnto(models.Model):
+class Alimentos(models.Model):
     nome = models.CharField(max_length=100)
-    calorias_100g = models.FloatField()
-    proteina_100g = models.FloatField()
-    gordura_100g = models.FloatField()
-    preçp_kg = models.FloatField()
+    proteina = models.FloatField()
+    carboidrato = models.FloatField()
+    gordura = models.FloatField()
+    calorias = models.FloatField()
+    custo = models.FloatField()
+    categoria = models.CharField(max_length=50)
 
     def __str__(self):
         return self.nome

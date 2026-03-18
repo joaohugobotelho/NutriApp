@@ -1,3 +1,4 @@
+
 def calcular_tmb(peso, altura, idade):
     return(10 * peso) + (0.25 * altura) - (5 * idade) + 5
 
@@ -24,26 +25,48 @@ def fator_atividade(nivel):
     }
     return fatores.get(nivel,1.2)
 
-def ajustar_calorias(calorias_manutencap, objetivo, tipo_deficit):
+def ajustar_calorias(calorias_manutencao, objetivo, tipo_deficit):
 
     if objetivo == "manter":
-        return calorias_manutencap
+        return calorias_manutencao
     if objetivo == "massa":
-        return calorias_manutencap + 300
+        return calorias_manutencao + 300
     if objetivo == "emagrecer":
 
         if tipo_deficit == "leve":
-            return calorias_manutencap - 300
+            return calorias_manutencao - 300
         
         elif tipo_deficit == "emagrecer":
-            return calorias_manutencap - 500
+            return calorias_manutencao - 500
         
         elif tipo_deficit == "agressivo":
-            return calorias_manutencap - 700
+            return calorias_manutencao - 700
         
-    return calorias_manutencap
+    return calorias_manutencao
 
 def calcular_calorias_usuario(usuario):
     tmb = calcular_tmb(usuario.peso, usuario.altura, usuario.idade)
     manutencao = tmb * fator_atividade(usuario.atividade)
-    return ajustar_calorias(manutencao, usuario.onjetivo, usuario.tipo_deficit)
+    return ajustar_calorias(manutencao, usuario.objetivo, usuario.tipo_deficit)
+
+
+def calcular_macros(usuario):
+    calorias = calcular_calorias_usuario(usuario)
+
+    peso = usuario.peso
+
+    proteina = peso * 2
+    gordura = peso * 0.8
+
+    calorias_proteina = proteina * 4
+    calorias_gordura = gordura * 9
+
+    calorias_restantes = calorias - (calorias_proteina + calorias_proteina)
+
+    carbo = calorias_restantes / 4
+
+    return {
+        'proteina': round(proteina, 1),
+        'gordura': round(gordura, 1),
+        'carbo': round(carbo, 1)
+    }

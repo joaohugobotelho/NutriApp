@@ -19,9 +19,12 @@ from django.urls import path
 from usuarios.views import usuario_dieta
 from usuarios.views import cadastrar_usuario
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('dieta/', usuario_dieta),
+    path('dieta/<int:id>/', usuario_dieta, name='dieta'),
     path('cadastro/', cadastrar_usuario),
+    path('', cadastrar_usuario)
+  
     
 ]
