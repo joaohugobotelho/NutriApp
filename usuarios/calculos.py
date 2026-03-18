@@ -1,3 +1,4 @@
+from alimentos.models import Alimentos
 
 def calcular_tmb(peso, altura, idade):
     return(10 * peso) + (0.25 * altura) - (5 * idade) + 5
@@ -70,3 +71,41 @@ def calcular_macros(usuario):
         'gordura': round(gordura, 1),
         'carbo': round(carbo, 1)
     }
+
+def montar_dieta(usuario):
+    calorias = calcular_calorias_usuario(usuario)
+    macros = calcular_macros(usuario)
+
+    
+
+    dieta = []
+
+    proteina_alimentos = Alimentos.objects.filter(categoria='proteina').first()
+    carbo_alimentos = Alimentos.objects.filter(categoria='carbo').first()
+    gordura_alimentos = Alimentos.objects.filter(categoria= 'gordura').first()
+
+    if proteina_alimentos:
+        qtd_proteina = macros['proteina'] / proteina_alimentos.proteina
+        dieta.append({
+            'nome': proteina_alimentos.nome,
+            'quantidade': round(qtd_proteina * 100, 0),
+            'calorias': proteina_alimentos.calorias
+        })
+
+    if carbo_alimentos:
+        qtd_carbo = macros['carbo'] / carbo_alimentos.carboidrato
+        dieta.append({
+            'nome': carbo_alimentos.nome,
+            'quantidade': round(qtd_carbo * 100, 0),
+            'calorias': carbo_alimentos.calorias
+        })
+
+    if gordura_alimentos:
+        qtd_gordura = macros['gordura'] / gordura_alimentos.gordura
+        dieta.append({
+            'nome':gordura_alimentos.nome,
+            'quantidade': round(qtd_gordura * 100, 0),
+            'calorias': gordura_alimentos.calorias
+        })
+
+    return dieta
